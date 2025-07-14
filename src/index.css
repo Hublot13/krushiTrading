@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base colors - earthy tones */
+    --background: 40 33% 98%;
+    --foreground: 30 10% 15%;
+
+    --card: 40 33% 98%;
+    --card-foreground: 30 10% 15%;
+
+    --popover: 40 33% 98%;
+    --popover-foreground: 30 10% 15%;
+
+    --primary: 30 43% 36%;
+    --primary-foreground: 40 33% 98%;
+
+    --secondary: 30 25% 89%;
+    --secondary-foreground: 30 43% 36%;
+
+    --muted: 30 25% 89%;
+    --muted-foreground: 30 10% 40%;
+
+    --accent: 35 65% 85%;
+    --accent-foreground: 30 43% 36%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 40 33% 98%;
+
+    --border: 30 25% 80%;
+    --input: 30 25% 80%;
+    --ring: 30 43% 36%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 30 15% 15%;
+    --foreground: 40 33% 98%;
+
+    --card: 30 15% 15%;
+    --card-foreground: 40 33% 98%;
+
+    --popover: 30 15% 15%;
+    --popover-foreground: 40 33% 98%;
+
+    --primary: 35 65% 60%;
+    --primary-foreground: 30 15% 15%;
+
+    --secondary: 30 15% 30%;
+    --secondary-foreground: 40 33% 98%;
+
+    --muted: 30 15% 30%;
+    --muted-foreground: 30 10% 70%;
+
+    --accent: 30 15% 30%;
+    --accent-foreground: 40 33% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 40 33% 98%;
+
+    --border: 30 15% 30%;
+    --input: 30 15% 30%;
+    --ring: 35 65% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-poppins;
+  }
+}
+
+/* Custom button styles */
+.btn {
+  @apply rounded-lg px-5 py-2.5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+}
+
+.btn-primary {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+}
+
+.btn-outline {
+  @apply border border-primary bg-transparent text-primary hover:bg-primary/10;
+}
+
+/* Product grid styling - updated for mobile */
+.product-grid {
+  @apply grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 md:gap-6;
+}
+
+/* Product item styling - no box shadow or border on mobile */
+.product-item {
+  @apply bg-transparent transition-all duration-300 shadow-none border-0;
+}
+
+/* Hero section styling */
+.hero-section {
+  @apply bg-cover bg-center bg-no-repeat;
+}
+
+/* Animations */
+.section-animate {
+  @apply opacity-0 animate-fade-in;
+}
+
+/* Smooth link underline animation */
+.link-underline {
+  @apply relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-earth-brown after:transition-all after:duration-300 hover:after:w-full;
+}
+
+/* Mobile improvements */
+@media (max-width: 640px) {
+  .mobile-card {
+    @apply shadow-none border-0 bg-transparent p-0;
+  }
+  
+  .mobile-item {
+    @apply p-2;
+  }
+  
+  .mobile-grid {
+    @apply gap-2 grid-cols-2;
+  }
+  
+  .mobile-section {
+    @apply py-6;
+  }
+}
+
+/* Add keyframes for fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add the animation class */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+}
